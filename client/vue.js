@@ -15,6 +15,7 @@ var app = new Vue({
     listHouse: function(){
       axios.get('http://localhost:3000/api/houses')
       .then(function(response){
+        console.log(response);
         app.houses = response.data
       })
     },
@@ -68,6 +69,24 @@ var app = new Vue({
         }
       })
       .modal('show')
+    },
+    modalCreate: function() {
+      $('.ui.modal#modalCreate')
+      .modal('show')
+      var map = new GMaps({
+        el: '#createMap',
+        lat: -12.043333,
+        lng: -77.028333,
+        click: function(e){
+          map.removeMarkers()
+          map.addMarker({
+            lat: e.latLng.lat(),
+            lng: e.latLng.lng()
+          })
+          app.houseCreate.latitude = e.latLng.lat()
+          app.houseCreate.longitude = e.latLng.lng()
+        }
+      })
     }
   }
 })

@@ -15,14 +15,14 @@
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.7/semantic.min.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- <script src="http://maps.google.com/maps/api/js"></script> -->
-    <!-- <script src="gmaps.js"></script>
+    <script src="http://maps.google.com/maps/api/js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gmaps.js/0.4.24/gmaps.min.js"></script>
     <style type="text/css">
-      #map {
-        width: 400px;
+      .map {
+        width: 100%;
         height: 400px;
       }
-    </style> -->
+    </style>
   </head>
   <body>
     <div id="app">
@@ -34,7 +34,7 @@
           </a>
           <div class="right menu">
             <div class="item">
-              <button class="ui item inverted float right" type="button" name="button" onclick="modalCreate()">Sell Home</button>
+              <button class="ui item inverted float right" type="button" name="button" v-on:click="modalCreate()">Sell Home</button>
             </div>
           </div>
         </div>
@@ -62,14 +62,7 @@
               <label>Link Image</label>
               <input name="image" placeholder="Link Image" type="text" v-model="houseCreate.image">
             </div>
-            <div class="field">
-              <label>Latitude</label>
-              <input name="latitude" placeholder="Latitude" type="text" v-model="houseCreate.latitude">
-            </div>
-            <div class="field">
-              <label>Longitude</label>
-              <input name="longitude" placeholder="Longitude" type="text" v-model="houseCreate.longitude">
-            </div>
+            <div class="map" id="createMap"></div>
             <div class="actions">
               <div class="ui black deny button">
                 Nope
@@ -140,10 +133,13 @@
                 <p>DETAILS: {{house.detail}}</p>
                 <p>SELL SINCE: {{house.createdAt}}</p>
               </div>
-            </div>
-            <div class="footer">
-              <button class="ui blue button medium" v-on:click="modalEdit(house._id, house.price, house.image, house.detail, house.longitude, house.latitude, house.title)" name="edit"><i class="icon edit"></i>Edit</button>
-              <button class="ui negative button medium" v-on:click="deleteHouse(house._id)"><i class="icon trash"></i>Delete</button>
+              <div class="extra">
+                <p>{{house.longitude}}</p>
+                <p>{{house.latitude}}</p>
+                <button class="ui green button" name="button">Map</button>
+                <button class="ui blue button medium" v-on:click="modalEdit(house._id, house.price, house.image, house.detail, house.longitude, house.latitude, house.title)" name="edit"><i class="icon edit"></i>Edit</button>
+                <button class="ui negative button medium" v-on:click="deleteHouse(house._id)"><i class="icon trash"></i>Delete</button>
+              </div>
             </div>
           </div>
         </div>
