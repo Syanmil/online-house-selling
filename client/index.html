@@ -48,38 +48,38 @@
           <form class="ui form">
             <div class="field">
               <label>Title</label>
-              <input name="title" placeholder="Title" type="text">
+              <input name="title" placeholder="Title" type="text" v-model="houseCreate.title">
             </div>
             <div class="field">
               <label>Price</label>
-              <input name="price" placeholder="Price" type="text">
+              <input name="price" placeholder="Price" type="text" v-model="houseCreate.price">
             </div>
             <div class="field">
               <label>Details</label>
-              <textarea name="detail" placeholder="Details"></textarea>
+              <textarea name="detail" placeholder="Details" v-model="houseCreate.detail"></textarea>
             </div>
             <div class="field">
               <label>Link Image</label>
-              <input name="image" placeholder="Link Image" type="text">
+              <input name="image" placeholder="Link Image" type="text" v-model="houseCreate.image">
             </div>
             <div class="field">
               <label>Latitude</label>
-              <input name="latitude" placeholder="Latitude" type="text">
+              <input name="latitude" placeholder="Latitude" type="text" v-model="houseCreate.latitude">
             </div>
             <div class="field">
               <label>Longitude</label>
-              <input name="longitude" placeholder="Longitude" type="text">
+              <input name="longitude" placeholder="Longitude" type="text" v-model="houseCreate.longitude">
+            </div>
+            <div class="actions">
+              <div class="ui black deny button">
+                Nope
+              </div>
+              <div class="ui positive right labeled icon button" v-on:click="createHouse()">
+                Sell This Home
+                <i class="checkmark icon"></i>
+              </div>
             </div>
           </form>
-        </div>
-        <div class="actions">
-          <div class="ui black deny button">
-            Nope
-          </div>
-          <div class="ui positive right labeled icon button">
-            Sell This Home
-            <i class="checkmark icon"></i>
-          </div>
         </div>
       </div>
       <div class="ui grid container">
