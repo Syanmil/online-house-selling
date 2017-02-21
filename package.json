@@ -1,0 +1,19 @@
+{
+  "name": "online-house-selling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Syanmil/online-house-selling.git"
+  },
+  "author": "Syanmil",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Syanmil/online-house-selling/issues"
+  },
+  "homepage": "https://github.com/Syanmil/online-house-selling#readme"
+}
