@@ -14,14 +14,15 @@
       crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.7/semantic.min.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script src="http://maps.google.com/maps/api/js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script src="http://maps.google.com/maps/api/js"></script>
     <script src="gmaps.js"></script>
     <style type="text/css">
       #map {
         width: 400px;
         height: 400px;
       }
-    </style>
+    </style> -->
   </head>
   <body>
     <div id="app">
@@ -40,6 +41,21 @@
       </div>
       <div class="ui grid container">
         <h1>{{ message }}</h1>
+        <div class="ui items">
+          <div v-for="house in houses" class="item" v-bind:id="house._id">
+            <div class="image">
+              <img v-bind:src="house.image">
+            </div>
+            <div class="content">
+              <a class="header">{{house.title}}</a>
+              <div class="description">
+                <p>PRICE: {{house.price}}</p>
+                <p>DETAILS: {{house.detail}}</p>
+                <p>SELL SINCE: {{house.createdAt}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <script src="vue.js"></script>
