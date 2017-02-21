@@ -3,7 +3,7 @@ var app = new Vue({
   data: {
     message: 'Hello Vue!',
     houses: [],
-    houseInput: {
+    houseCreate: {
       title : '',
   		price : '',
   		detail : '',
@@ -18,6 +18,17 @@ var app = new Vue({
       .then(function(response){
         app.houses = response.data
       })
+    },
+    createHouse: function(){
+      axios.post('http://localhost:3000/api/houses', {
+
+      })
+    },
+    deleteHouse: function(){
+
+    },
+    editHouse: function(){
+
     }
   }
 })
