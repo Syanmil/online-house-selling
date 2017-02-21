@@ -15,7 +15,7 @@
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.7/semantic.min.js"></script>
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="http://maps.google.com/maps/api/js"></script>
+    <!-- <script src="http://maps.google.com/maps/api/js"></script> -->
     <!-- <script src="gmaps.js"></script>
     <style type="text/css">
       #map {
@@ -91,33 +91,33 @@
           <form class="ui form">
             <div class="field">
               <label>Title</label>
-              <input name="title" placeholder="Title" type="text" v-model="houseEdit.title">
+              <input name="title" placeholder="Title" type="text" >
             </div>
             <div class="field">
               <label>Price</label>
-              <input name="price" placeholder="Price" type="text" v-model="houseEdit.price">
+              <input name="price" placeholder="Price" type="text" >
             </div>
             <div class="field">
               <label>Details</label>
-              <textarea name="detail" placeholder="Details" v-model="houseEdit.detail"></textarea>
+              <textarea name="detail" placeholder="Details" ></textarea>
             </div>
             <div class="field">
               <label>Link Image</label>
-              <input name="image" placeholder="Link Image" type="text" v-model="houseEdit.image">
+              <input name="image" placeholder="Link Image" type="text" >
             </div>
             <div class="field">
               <label>Latitude</label>
-              <input name="latitude" placeholder="Latitude" type="text" v-model="houseEdit.latitude">
+              <input name="latitude" placeholder="Latitude" type="text" >
             </div>
             <div class="field">
               <label>Longitude</label>
-              <input name="longitude" placeholder="Longitude" type="text" v-model="houseEdit.longitude">
+              <input name="longitude" placeholder="Longitude" type="text" >
             </div>
             <div class="actions">
               <div class="ui black deny button">
                 Cancel
               </div>
-              <div class="ui positive right labeled icon button" v-on:click="editHouse(houseEdit._id)">
+              <div class="ui positive right labeled icon button">
                 Update Detail
                 <i class="checkmark icon"></i>
               </div>
@@ -136,7 +136,6 @@
             <div class="content">
               <a class="header">{{house.title}}</a>
               <div class="description">
-                <p>index {{house.index}}</p>
                 <p>PRICE: {{house.price}}</p>
                 <p>DETAILS: {{house.detail}}</p>
                 <p>SELL SINCE: {{house.createdAt}}</p>

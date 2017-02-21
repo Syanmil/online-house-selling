@@ -9,14 +9,6 @@ var app = new Vue({
   		image : '',
   		latitude: '',
       longitude: ''
-    },
-    houseEdit: {
-      title : '',
-  		price : '',
-  		detail : '',
-  		image : '',
-  		latitude: '',
-      longitude: ''
     }
   },
   methods: {
@@ -25,13 +17,6 @@ var app = new Vue({
       .then(function(response){
         app.houses = response.data
       })
-      // $.ajax({
-      //   method: 'GET',
-      //   url: 'http://localhost:3000/api/houses',
-      //   success: function(response){
-      //     app.houses = response
-      //   }
-      // })
     },
     createHouse: function(){
       axios.post('http://localhost:3000/api/houses', {
@@ -54,17 +39,17 @@ var app = new Vue({
         })
       })
     },
-    editHouse: function(){
+    editHouse: function(id){
       axios.put(`http://localhost:3000/api/houses/${id}`, {
-        title : app.houseEdit.title,
-    		price : app.houseEdit.price,
-    		detail : app.houseEdit.detail,
-    		image : app.houseEdit.image,
-    		latitude: app.houseEdit.latitude,
-        longitude: app.houseEdit.longitude
+        title : $('#modalEdit input[name=title]').val(),
+    		price : $('#modalEdit input[name=price]').val(),
+    		detail : $('#modalEdit textarea[name=detail]').val(),
+    		image : $('#modalEdit input[name=image]').val(),
+    		latitude: $('#modalEdit input[name=latitude]').val(),
+        longitude: $('#modalEdit input[name=longitude]').val()
       })
-      .then(function(house){
-        console.log(house);
+      .then(function(){
+        app.listHouse()
       })
     },
     modalEdit: function(id, price, image, detail, longitude, latitude, title) {
@@ -77,6 +62,9 @@ var app = new Vue({
           $('#modalEdit input[name=image]').val(image)
           $('#modalEdit input[name=latitude]').val(latitude)
           $('#modalEdit input[name=longitude]').val(longitude)
+        },
+        onApprove: function(){
+          app.editHouse(id)
         }
       })
       .modal('show')
