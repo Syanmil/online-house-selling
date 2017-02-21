@@ -13,6 +13,7 @@
       integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
       crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.7/semantic.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="http://maps.google.com/maps/api/js"></script>
     <script src="gmaps.js"></script>
     <style type="text/css">
@@ -23,19 +24,25 @@
     </style>
   </head>
   <body>
-    <div class="ui container">
-      <div id="app">
+    <div id="app">
+      <div class="ui inverted menu">
+        <div class="ui container">
+          <a href="#" class="header item">
+            <i class="fort awesome icon"></i>
+            Juaruma
+          </a>
+          <div class="right menu">
+            <div class="item">
+              <button class="ui item inverted float right" type="button" name="button">Sell Home</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ui grid container">
         <h1>{{ message }}</h1>
       </div>
     </div>
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <script type="text/javascript">
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello Vue!'
-      }
-    })
-    </script>
+    <script src="vue.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>
