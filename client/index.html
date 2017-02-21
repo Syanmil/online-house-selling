@@ -83,7 +83,6 @@
         </div>
       </div>
       <div class="ui grid container">
-        <h1>{{ message }}</h1>
         <div class="ui items">
           <div v-for="house in houses" class="item" v-bind:id="house._id">
             <div class="image">
@@ -96,6 +95,10 @@
                 <p>DETAILS: {{house.detail}}</p>
                 <p>SELL SINCE: {{house.createdAt}}</p>
               </div>
+            </div>
+            <div class="footer">
+              <button class="ui blue button medium" name="edit"><i class="icon edit"></i>Edit</button>
+              <button class="ui negative button medium" v-on:click="deleteHouse(house._id)"><i class="icon trash"></i>Delete</button>
             </div>
           </div>
         </div>

@@ -1,7 +1,6 @@
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello Vue!',
     houses: [],
     houseCreate: {
       title : '',
@@ -29,12 +28,16 @@ var app = new Vue({
         longitude: app.houseCreate.longitude
       })
       .then(function(house){
-        console.log('success');
         app.houses.push(house.data)
       })
     },
-    deleteHouse: function(){
-
+    deleteHouse: function(id){
+      axios.delete(`http://localhost:3000/api/houses/${id}`)
+      .then(function() {
+        app.houses = app.houses.filter(function(house){
+          return house._id != id
+        })
+      })
     },
     editHouse: function(){
 
