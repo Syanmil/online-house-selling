@@ -82,7 +82,52 @@
           </form>
         </div>
       </div>
+      <div class="ui modal" id="modalEdit">
+        <i class="close icon"></i>
+        <div class="header">
+          Edit Home Selling Details
+        </div>
+        <div class="content">
+          <form class="ui form">
+            <div class="field">
+              <label>Title</label>
+              <input name="title" placeholder="Title" type="text" v-model="houseEdit.title">
+            </div>
+            <div class="field">
+              <label>Price</label>
+              <input name="price" placeholder="Price" type="text" v-model="houseEdit.price">
+            </div>
+            <div class="field">
+              <label>Details</label>
+              <textarea name="detail" placeholder="Details" v-model="houseEdit.detail"></textarea>
+            </div>
+            <div class="field">
+              <label>Link Image</label>
+              <input name="image" placeholder="Link Image" type="text" v-model="houseEdit.image">
+            </div>
+            <div class="field">
+              <label>Latitude</label>
+              <input name="latitude" placeholder="Latitude" type="text" v-model="houseEdit.latitude">
+            </div>
+            <div class="field">
+              <label>Longitude</label>
+              <input name="longitude" placeholder="Longitude" type="text" v-model="houseEdit.longitude">
+            </div>
+            <div class="actions">
+              <div class="ui black deny button">
+                Cancel
+              </div>
+              <div class="ui positive right labeled icon button" v-on:click="editHouse(houseEdit._id)">
+                Update Detail
+                <i class="checkmark icon"></i>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <br>
       <div class="ui grid container">
+        <div class="three wide column"></div>
         <div class="ui items">
           <div v-for="house in houses" class="item" v-bind:id="house._id">
             <div class="image">
@@ -91,13 +136,14 @@
             <div class="content">
               <a class="header">{{house.title}}</a>
               <div class="description">
+                <p>index {{house.index}}</p>
                 <p>PRICE: {{house.price}}</p>
                 <p>DETAILS: {{house.detail}}</p>
                 <p>SELL SINCE: {{house.createdAt}}</p>
               </div>
             </div>
             <div class="footer">
-              <button class="ui blue button medium" name="edit"><i class="icon edit"></i>Edit</button>
+              <button class="ui blue button medium" v-on:click="modalEdit(house._id, house.price, house.image, house.detail, house.longitude, house.latitude, house.title)" name="edit"><i class="icon edit"></i>Edit</button>
               <button class="ui negative button medium" v-on:click="deleteHouse(house._id)"><i class="icon trash"></i>Delete</button>
             </div>
           </div>
