@@ -30,7 +30,9 @@ module.exports = {
     });
   },
   create: function (req, res) {
-    var house = new houseModel({		title : req.body.title,		price : req.body.price,		detail : req.body.detail,		createdAt : req.body.createdAt,		image : req.body.image,		maps : req.body.maps
+    var house = new houseModel({
+		title : req.body.title,		price : req.body.price,		detail : req.body.detail,		createdAt : new Date(),		image : req.body.image,		latitude: req.body.latitude,
+    longitude: req.body.longitude
     });
     house.save(function (err, house) {
       if (err) {
@@ -56,8 +58,7 @@ module.exports = {
           message: 'No such house'
         });
       }
-      house.title = req.body.title ? req.body.title : house.title;  		house.price = req.body.price ? req.body.price : house.price;  		house.detail = req.body.detail ? req.body.detail : house.detail;  		house.createdAt = req.body.createdAt ? req.body.createdAt : house.createdAt;  		house.image = req.body.image ? req.body.image : house.image;  		house.maps = req.body.maps ? req.body.maps : house.maps;      house.save(function (err, house) {
-        if (err) {
+      house.title = req.body.title ? req.body.title : house.title;  		house.price = req.body.price ? req.body.price : house.price;  		house.detail = req.body.detail ? req.body.detail : house.detail;  		house.image = req.body.image ? req.body.image : house.image;      house.latitude = req.body.latitude ? req.body.latitude : house.latitude;      house.longitude = req.body.longitude ? req.body.longitude : house.longitude;      house.save(function (err, house) {        if (err) {
           return res.status(500).json({
             message: 'Error when updating house.',
             error: err

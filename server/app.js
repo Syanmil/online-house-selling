@@ -4,7 +4,7 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 require('dotenv').config()
 
-var house = require('./routes/houseRoutes');
+var houses = require('./routes/houseRoutes');
 
 var app = express()
 
@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors())
 
-app.use('/api/house', house);
+app.use('/api/houses', houses);
 
 app.listen(process.env.PORT, function(){
   console.log('connected');
