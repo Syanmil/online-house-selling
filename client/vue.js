@@ -9,6 +9,14 @@ var app = new Vue({
   		image : '',
   		latitude: '',
       longitude: ''
+    },
+    houseEdit: {
+      title : '',
+  		price : '',
+  		detail : '',
+  		image : '',
+  		latitude: '',
+      longitude: ''
     }
   },
   methods: {
@@ -42,12 +50,12 @@ var app = new Vue({
     },
     editHouse: function(id){
       axios.put(`http://localhost:3000/api/houses/${id}`, {
-        title : $('#modalEdit input[name=title]').val(),
-    		price : $('#modalEdit input[name=price]').val(),
-    		detail : $('#modalEdit textarea[name=detail]').val(),
-    		image : $('#modalEdit input[name=image]').val(),
-    		latitude: $('#modalEdit input[name=latitude]').val(),
-        longitude: $('#modalEdit input[name=longitude]').val()
+        title : app.houseEdit.title,
+    		price : app.houseEdit.price,
+    		detail : app.houseEdit.detail,
+    		image : app.houseEdit.image,
+    		latitude: app.houseEdit.latitude,
+        longitude: app.houseEdit.longitude
       })
       .then(function(){
         app.listHouse()
@@ -56,19 +64,34 @@ var app = new Vue({
     modalEdit: function(id, price, image, detail, longitude, latitude, title) {
       $('.ui.modal#modalEdit')
       .modal('setting', {
-        onShow: function(){
-          $('#modalEdit input[name=title]').val(title)
-          $('#modalEdit input[name=price]').val(price)
-          $('#modalEdit textarea[name=detail]').val(detail)
-          $('#modalEdit input[name=image]').val(image)
-          $('#modalEdit input[name=latitude]').val(latitude)
-          $('#modalEdit input[name=longitude]').val(longitude)
-        },
         onApprove: function(){
           app.editHouse(id)
         }
       })
       .modal('show')
+      app.houseEdit.title = title
+      app.houseEdit.price = price
+      app.houseEdit.detail = detail
+      app.houseEdit.image = image
+      var map = new GMaps({
+        el: '#mapEdit',
+        lat: latitude,
+        lng: longitude,
+        click: function(e){
+          map.removeMarkers()
+          map.addMarker({
+            lat: e.latLng.lat(),
+            lng: e.latLng.lng()
+          })
+          app.houseEdit.latitude = e.latLng.lat()
+          app.houseEdit.longitude = e.latLng.lng()
+        }
+      })
+      map.addMarker({
+        lat: latitude,
+        lng: longitude,
+        title: 'Home Location'
+      })
     },
     modalCreate: function() {
       $('.ui.modal#modalCreate')

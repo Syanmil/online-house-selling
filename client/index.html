@@ -93,28 +93,21 @@
           <form class="ui form">
             <div class="field">
               <label>Title</label>
-              <input name="title" placeholder="Title" type="text" >
+              <input name="title" placeholder="Title" type="text" v-model="houseEdit.title">
             </div>
             <div class="field">
               <label>Price</label>
-              <input name="price" placeholder="Price" type="text" >
+              <input name="price" placeholder="Price" type="text" v-model="houseEdit.price">
             </div>
             <div class="field">
               <label>Details</label>
-              <textarea name="detail" placeholder="Details" ></textarea>
+              <textarea name="detail" placeholder="Details" v-model="houseEdit.detail"></textarea>
             </div>
             <div class="field">
               <label>Link Image</label>
-              <input name="image" placeholder="Link Image" type="text" >
+              <input name="image" placeholder="Link Image" type="text" v-model="houseEdit.image">
             </div>
-            <div class="field">
-              <label>Latitude</label>
-              <input name="latitude" placeholder="Latitude" type="text" >
-            </div>
-            <div class="field">
-              <label>Longitude</label>
-              <input name="longitude" placeholder="Longitude" type="text" >
-            </div>
+            <div class="map" id="mapEdit"></div>
             <div class="actions">
               <div class="ui black deny button">
                 Cancel
