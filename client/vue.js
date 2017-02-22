@@ -75,8 +75,8 @@ var app = new Vue({
       .modal('show')
       var map = new GMaps({
         el: '#createMap',
-        lat: -12.043333,
-        lng: -77.028333,
+        lat: -6.211545,
+        lng: 106.845323,
         click: function(e){
           map.removeMarkers()
           map.addMarker({
@@ -85,6 +85,24 @@ var app = new Vue({
           })
           app.houseCreate.latitude = e.latLng.lat()
           app.houseCreate.longitude = e.latLng.lng()
+        }
+      })
+    },
+    modalMap: function(latitude, longitude){
+      $('.small.modal#modalMap')
+      .modal('show')
+      var map = new GMaps({
+        el: '#mapDetail',
+        lat: latitude,
+        lng: longitude,
+      })
+      map.addMarker({
+        lat: latitude,
+        lng: longitude,
+        title: 'Home Location',
+        infoWindow: {
+          content:
+            `<button class="ui button positive"><i class="icon payment"></i>BUY NOW</button>`
         }
       })
     }

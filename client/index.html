@@ -75,6 +75,15 @@
           </form>
         </div>
       </div>
+      <div class="ui small modal" id="modalMap">
+        <div class="ui icon header">
+          <i class="map sign icon"></i>
+          Location Details
+        </div>
+        <div class="content">
+          <div class="map" id="mapDetail"></div>
+        </div>
+      </div>
       <div class="ui modal" id="modalEdit">
         <i class="close icon"></i>
         <div class="header">
@@ -134,9 +143,7 @@
                 <p>SELL SINCE: {{house.createdAt}}</p>
               </div>
               <div class="extra">
-                <p>{{house.longitude}}</p>
-                <p>{{house.latitude}}</p>
-                <button class="ui green button" name="button">Map</button>
+                <button class="ui green button" v-on:click="modalMap(house.latitude, house.longitude)"><i class="icon map"></i>Map</button>
                 <button class="ui blue button medium" v-on:click="modalEdit(house._id, house.price, house.image, house.detail, house.longitude, house.latitude, house.title)" name="edit"><i class="icon edit"></i>Edit</button>
                 <button class="ui negative button medium" v-on:click="deleteHouse(house._id)"><i class="icon trash"></i>Delete</button>
               </div>
